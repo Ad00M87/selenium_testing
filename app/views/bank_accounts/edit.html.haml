@@ -1,0 +1,9 @@
+%h1
+  Editing Bank Account:
+  = @bank_account.institution
+%hr
+
+= render(partial: 'form')
+
+= link_to 'All Accounts', bank_accounts_path, id: 'back-to-home'
+= link_to 'Logout', destroy_user_session_path, method: :delete

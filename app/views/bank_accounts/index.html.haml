@@ -1,0 +1,21 @@
+%h1 All Of My Monies
+%hr
+
+- if @bank_accounts.any?
+  %ul
+    - @bank_accounts.each do |bank_account|
+      %li.bank_account
+        %h3
+          Institution:
+          = link_to bank_account.institution, bank_account_path(bank_account), class: 'show_account'
+        %p
+          Desctiption:
+          = bank_account.description
+        = link_to 'Delete', bank_account_path(bank_account), class: 'delete_account', method: :delete, data: {confirm: 'Really Delete?'}
+- else
+  %h3 No Bank Accounts, Please Create One!
+
+%hr
+
+= link_to 'New Bank Account', new_bank_account_path, id: 'new-bank-account'
+= link_to 'Logout', destroy_user_session_path, method: :delete
